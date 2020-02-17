@@ -11,6 +11,7 @@ public class main {
 		//Graphe g = new Graphe(36);
 		//g.addArc(36, 37);
 		System.out.println(g.toString());
+		g.export();
 	}
 	
 
