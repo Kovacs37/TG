@@ -93,6 +93,7 @@ public class Graphe {
 				profR(this, i);
 				//profI(this, i);
 				// largeur, this, i);
+				// salut moi c'est jean patrice
 			}
 			
 		}
