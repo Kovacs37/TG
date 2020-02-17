@@ -1,2 +1,2 @@
-module TPGraphes {
+module TPGraphe {
 }

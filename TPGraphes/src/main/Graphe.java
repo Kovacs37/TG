@@ -26,17 +26,15 @@ public class Graphe {
 		this();
 		
         String path = file;
-        int index = 0;
         try {
             // default StandardCharsets.UTF_8
             String content = Files.readString(Paths.get(path));	
-        	int x = 0,y=0, z=0;;
+        	int x = 0, y=0;
             
         	String[] jarjar = content.split("\n");
         	for(int i = 1;i<jarjar.length;++i) {
         		x= (int) jarjar[i].charAt(0) - '0';
         		y= (int) jarjar[i].charAt(2)- '0';
-        	//	z= (int) jarjar[i].charAt(4)- '0';
 
         		
         		addNoeud(x);
