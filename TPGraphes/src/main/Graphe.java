@@ -83,13 +83,14 @@ public class Graphe {
 	
 	public void parcours(Graphe g) {
 		// attention peut être utiliser la hashmasp ???
-		
-		
 		for(Noeud n : g.getNoeuds()) {
 			n.setMark(false);
 		}
-		for(int i =0;i<g.getNoeuds().size();++i) {
+		String str;
+		for(int i =1;i<=g.getNoeuds().size();++i) {
+			//System.out.println(g.getNoeud(1));
 			if(!g.getNoeud(i).isMark()) {
+				System.out.println();
 				profR(this, i);
 				//profI(this, i);
 				// largeur, this, i);
@@ -102,7 +103,31 @@ public class Graphe {
 	public void profR(Graphe g, int n) {
 		g.getNoeud(n).setMark(true);
 		System.out.println(n);
-	//	for(int i =n;i<g.)
+		
+		// parcours de la liste d'arc succ 
+		//	for(int i =n;i<g.)
+		
+		LinkedList<Arc> t= g.getNoeud(n).getSucc();
+		int size = t.size();
+		//System.out.println("size " + size);
+		for(int i =0;i<size;++i) {
+			//System.out.println("i " +i);
+			System.out.print("-");
+			if(!t.get(i).getCible().isMark()) profR(g,t.get(i).getCible().getId());
+			//if (!g.getNoeud(i).isMark()) profR(g, i);
+		
+		}
+		//System.out.println();
+		
+	}
+	
+	
+	
+	public void profI() {
+		
+	}
+	public void ProfI(Noeud n) {
+		
 	}
 	
 	

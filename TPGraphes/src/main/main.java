@@ -7,10 +7,11 @@ public class main {
 		
 		
 		System.out.println("test");
-		Graphe g = new Graphe("Arcs-toy2.csv");
+		Graphe g = new Graphe("Arcs-test.csv");
 		//Graphe g = new Graphe(36);
 		//g.addArc(36, 37);
 		System.out.println(g.toString());
+		g.parcours(g);
 	}
 	
 
