@@ -20,7 +20,7 @@ public class Graphe {
 		for (int i = 0; i < k; i++) {
 			getNoeuds().add(new Noeud(i + 1));
 			/* Adding elements to HashMap */
-			truc.put(i + 1, getNoeuds().getLast());
+			hmap.put(i + 1, getNoeuds().getLast());
 		}
 	}
 
@@ -116,17 +116,17 @@ public class Graphe {
 	}
 
 	public HashMap<Integer, Noeud> getHmap() {
-		return truc;
+		return hmap;
 	}
 
 	public void setHmap(HashMap<Integer, Noeud> hmap) {
-		this.truc = hmap;
+		this.hmap = hmap;
 	}
 
 	// attention doit Ãªtre snas doublons
-	private LinkedList<Noeud> noeuds;
+	protected LinkedList<Noeud> noeuds;
 
-	private HashMap<Integer, Noeud> truc;
+	protected HashMap<Integer, Noeud> hmap;
 
 	// Export d’un graphe sous format CSV selon la liste de ses arcs
 	// Format Source : Target
