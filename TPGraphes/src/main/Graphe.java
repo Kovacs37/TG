@@ -1,5 +1,6 @@
 package main;
-
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -119,10 +120,10 @@ public class Graphe {
 	}
 
 	public void parcoursprofR() {
-		// Initialisation de mark à False
+		// Initialisation de mark ï¿½ False
 		for (Noeud node : this.noeuds)
 			node.setMark(false);
-		// Pout tout noeud non marké,
+		// Pout tout noeud non markï¿½,
 		for (Noeud node : this.noeuds) {
 			if (!node.isMark()) {
 				// lancer le parcours en profondeur profR
@@ -140,7 +141,7 @@ public class Graphe {
 		// this.buffer += n.getId()+"\n"+this.buffer;
 		System.out.println(buffer + n.getId());
 
-		// Pour tout successeur non marké, appeler profR(successeur)
+		// Pour tout successeur non markï¿½, appeler profR(successeur)
 		for (Arc arc : n.getSucc()) {
 			// System.out.println(" on va de "+n.getId()+"->"+arc.getCible().getId());
 			if (!arc.getCible().isMark()) {
@@ -150,10 +151,10 @@ public class Graphe {
 	}
 
 	public void parcoursprofI() {
-		// Initialisation de mark à False
+		// Initialisation de mark ï¿½ False
 		for (Noeud node : this.noeuds)
 			node.setMark(false);
-		// Pout tout noeud non marké,
+		// Pout tout noeud non markï¿½,
 		for (Noeud node : this.noeuds) {
 			if (!node.isMark()) {
 				// lancer le parcours en profondeur prof (
@@ -192,10 +193,10 @@ public class Graphe {
 	}
 
 	public void parcourslargeur() {
-		// Initialisation de mark à False
+		// Initialisation de mark ï¿½ False
 		for (Noeud node : this.noeuds)
 			node.setMark(false);
-		// Pout tout noeud non marké,
+		// Pout tout noeud non markï¿½,
 		for (Noeud node : this.noeuds) {
 			if (!node.isMark()) {
 				// lancer le parcours en profondeur prof (
@@ -243,6 +244,30 @@ public class Graphe {
 
 	public void setHmap(HashMap<Integer, Noeud> hmap) {
 		this.hmap = hmap;
+	}
+
+	protected HashMap<Integer, Noeud> hmap;
+
+	// Export dï¿½un graphe sous format CSV selon la liste de ses arcs
+	// Format Source : Target
+	public void export() {
+		String buff = "Source,Target\n";
+		String sep = ",";
+		for (Noeud n : this.noeuds) {
+			for (Arc a : n.getSucc()) {
+				buff += a.getCible().getId() + sep + a.getSource().getId() + "\n";
+			}
+		}
+		File outputFile = new File(this.getClass() + ".csv");
+		FileWriter out;
+		try {
+			out = new FileWriter(outputFile);
+			out.write(buff);
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

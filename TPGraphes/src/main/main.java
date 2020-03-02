@@ -11,6 +11,9 @@ public class main {
 		//Graphe g = new Graphe(36);
 		//g.addArc(36, 37);
 		System.out.println(g.toString());
+		RandomGraphe rg = new RandomGraphe(15, 0.3);
+		System.out.println(rg.toString());
+		rg.export();
 		g.parcours(g);
 	}
 	
