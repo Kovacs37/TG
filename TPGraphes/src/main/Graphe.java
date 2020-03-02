@@ -246,7 +246,6 @@ public class Graphe {
 		this.hmap = hmap;
 	}
 
-	protected HashMap<Integer, Noeud> hmap;
 
 	// Export d�un graphe sous format CSV selon la liste de ses arcs
 	// Format Source : Target
