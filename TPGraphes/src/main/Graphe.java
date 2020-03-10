@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
@@ -14,6 +15,8 @@ public class Graphe {
 	private LinkedList<Noeud> noeuds;
 
 	private HashMap<Integer, Noeud> hmap;
+	
+	private ArrayList<Partition> partitions;
 
 	public Graphe() {
 		setNoeuds(new LinkedList<Noeud>());
