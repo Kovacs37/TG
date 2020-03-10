@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class PartitionSimple extends PartitionMethod{
+public class PartitionSimple implements IPartitionMethod{
 	
 	public ArrayList<Partition> partition(Graphe graph, int k) throws Exception {
 		int list_size = graph.getHmap().size();

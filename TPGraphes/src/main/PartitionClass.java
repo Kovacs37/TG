@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class PartitionClass {
-	ArrayList<Partition> partition(Graphe graph, int k) throws Exception{
+public class PartitionClass implements IPartitionMethod{
+	
+	public ArrayList<Partition> partition(Graphe graph, int k) throws Exception{
 		int[] class_part = classChoice(k-1);
 		ArrayList<Partition> partitions = new ArrayList<Partition>();
 		
