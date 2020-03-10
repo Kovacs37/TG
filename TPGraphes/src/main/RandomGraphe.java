@@ -34,14 +34,25 @@ public class RandomGraphe extends Graphe{
 		for(int i =0; i < m - 1; i++) {
 			//int max = binomialCoeff(n, 2);
 			//int r = (int)(Math.random()* max);
+			
+			//while() {
+				
+			//}
 			int[] tab = bijection(i);
 			add(tab[0],tab[1]);
 		}
 	}
+	
+	// remettre private et enlever static
 	private int[] bijection(int i) {
 		int[] tab = new int[2];
-		tab[0] = 1 + (int)Math.floor(-(1/2) + Math.sqrt((1/4) + 2 * i));
-		tab[1] = i - (tab[0]*(tab[0]-1))/2;
+	//	tab[0] = 1 + (int)(((-1/2) + Math.sqrt((1/4) + (2 * i))));
+		int v = 1;
+		int tmp = (int) (Math.sqrt(0.25+2*i)-0.5);
+		tab[0] = v+tmp;
+		tab[1] = i - ((tab[0]*(tab[0]-1))/2);
+		System.out.print(tab[0] + " - ");
+		System.out.println(tab[1]);
 		
 		return tab;
 	}
