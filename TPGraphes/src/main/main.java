@@ -2,6 +2,8 @@ package main;
 
 import java.util.ArrayList;
 
+import kmeans.FloydWarshall;
+
 public class main {
 
 	public static void main(String[] args) throws Exception {
@@ -53,15 +55,7 @@ public class main {
  
             
             
-            
-            int[][] weights = {{1, 3, -2}, {2, 1, 4}, {2, 3, 3}, {3, 4, 2}, {4, 2, -1}};
-            int numVertices = 4;
-     
-            FloydWarshall.floydWarshall(weights, numVertices);
-           // FloydWarshall.printResult(dist, next);
- 
-		
-		
+           
 		
 		
 		
