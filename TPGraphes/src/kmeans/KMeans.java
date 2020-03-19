@@ -19,12 +19,6 @@ public class KMeans {
     	this.clusters = new ArrayList<Cluster>();    	
     }
     
-    public static void main(String[] args) {
-    	
-    	KMeans kmeans = new KMeans();
-    	kmeans.init();
-    	kmeans.calculate();
-    }
     
     //Initializes the process
     public void init() {

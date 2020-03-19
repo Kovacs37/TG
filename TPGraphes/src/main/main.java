@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 
 import kmeans.FloydWarshall;
+import kmeans.KMeans;
 
 public class main {
 
@@ -55,7 +56,9 @@ public class main {
  
             
             
-           
+        	//KMeans kmeans = new KMeans();
+        	//kmeans.init();
+        	//kmeans.calculate();
 		
 		
 		
