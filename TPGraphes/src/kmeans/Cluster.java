@@ -18,7 +18,7 @@ public class Cluster {
 		this.centroid = null;
 	}
  
-	public List getNoeuds() {
+	public List<Noeud> getNoeuds() {
 		return Noeuds;
 	}
 	
