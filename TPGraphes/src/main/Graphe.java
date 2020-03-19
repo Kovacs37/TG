@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Stack;
 
 public class Graphe {
@@ -60,6 +61,8 @@ public class Graphe {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+			//TO DO verif ça
+		hmap.remove(hmap.size());
 	}
 
 	public void addNoeud(Noeud n) {
@@ -153,6 +156,56 @@ public class Graphe {
 		}
 	}
 
+	
+	public ArrayList<Arc> getArcs(){
+		ArrayList<Arc> arcs = new ArrayList<Arc>();
+        for (Map.Entry mapentry : hmap.entrySet()) {
+            System.out.println("clé: "+mapentry.getKey() 
+                               + " | valeur: " + mapentry.getValue());
+			for(Arc a : ((Noeud) mapentry.getValue()).getSucc()) {
+				arcs.add(a);
+			}
+         }
+		
+	/*	for(Noeud n : this.noeuds) {
+			for(Arc a : n.getSucc()) {
+				arcs.add(a);
+			}
+		}*/
+		return arcs;
+		//return rimuovereDuplicati(arcs);
+	}
+	
+	public static ArrayList<Arc> rimuovereDuplicati(ArrayList<Arc> aa){  
+		ArrayList<Arc> as = new ArrayList<Arc>(aa);
+		ArrayList<Arc> archi = new ArrayList<Arc>();	
+			int t = as.size();
+			
+			while(as.size()>0 && t>0) {
+					
+			Arc a = as.get(0);
+			System.out.println(as.size());
+			for(int indice = 1; indice< as.size() ;++indice) {
+				Arc ao = as.get(indice);
+				if((a.getCible()== ao.getCible() || a.getCible() == ao.getSource() )&& (a.getSource() == ao.getSource() || a.getSource() == ao.getCible())){
+					archi.add(a);
+					System.out.print("yo "+as.size()+" ");
+					as.remove(a);
+					as.remove(ao);
+					System.out.println(as.size());
+					break; 
+				}
+			
+			}
+			t--;
+		}
+		System.out.println("taille as " +t + " tai archi " +archi.size());
+    return archi;
+	}  
+	
+	
+	
+	
 	public void parcoursprofI() {
 		// Initialisation de mark ï¿½ False
 		for (Noeud node : this.noeuds)
