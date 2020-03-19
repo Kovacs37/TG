@@ -8,20 +8,15 @@ import main.Noeud;
  
 public class KMeans {
  
-	//Number of Clusters. This metric should be related to the number of Noeuds
     private int NUM_CLUSTERS = 3;    
-    //Number of Noeuds
     private int NUM_NoeudS = 15;
-    //Min and Max X and Y
-    private static final int MIN_COORDINATE = 0;
-    private static final int MAX_COORDINATE = 10;
     
     private List<Noeud> Noeuds;
     private List<Cluster> clusters;
     
     public KMeans() {
-    	this.Noeuds = new ArrayList();
-    	this.clusters = new ArrayList();    	
+    	this.Noeuds = new ArrayList<Noeud>();
+    	this.clusters = new ArrayList<Cluster>();    	
     }
     
     public static void main(String[] args) {
@@ -38,7 +33,7 @@ public class KMeans {
     	//Set Random Centroids
     	for(int i = 0; i < NUM_CLUSTERS; i++) {
     		Cluster cluster = new Cluster(i);
-    		Noeud centroid = Noeud.createRandomNoeud(MIN_COORDINATE,MAX_COORDINATE);
+    		Noeud centroid = new Noeud((int) Math.random());
     		cluster.setCentroid(centroid);
     		clusters.add(cluster);
     	}
@@ -48,7 +43,7 @@ public class KMeans {
     }
  
 	private void plotClusters() {
-    	for (int i = 0; i &lt; NUM_CLUSTERS; i++) {
+    	for (int i = 0; i < NUM_CLUSTERS; i++) {
     		Cluster c = clusters.get(i);
     		c.plotCluster();
     	}
@@ -64,7 +59,7 @@ public class KMeans {
         	//Clear cluster state
         	clearClusters();
         	
-        	List lastCentroids = getCentroids();
+        	List<Noeud> lastCentroids = getCentroids();
         	
         	//Assign Noeuds to the closer cluster
         	assignCluster();
@@ -74,11 +69,11 @@ public class KMeans {
         	
         	iteration++;
         	
-        	List currentCentroids = getCentroids();
+        	List<Noeud> currentCentroids = getCentroids();
         	
         	//Calculates total distance between new and old Centroids
         	double distance = 0;
-        	for(int i = 0; i &lt; lastCentroids.size(); i++) {
+        	for(int i = 0; i < lastCentroids.size(); i++) {
         		distance += Noeud.distance(lastCentroids.get(i),currentCentroids.get(i));
         	}
         	System.out.println("#################");
@@ -98,11 +93,11 @@ public class KMeans {
     	}
     }
     
-    private List getCentroids() {
-    	List centroids = new ArrayList(NUM_CLUSTERS);
+    private List<Noeud> getCentroids() {
+    	List<Noeud> centroids = new ArrayList<Noeud>(NUM_CLUSTERS);
     	for(Cluster cluster : clusters) {
     		Noeud aux = cluster.getCentroid();
-    		Noeud Noeud = new Noeud(aux.getX(),aux.getY());
+    		Noeud Noeud = new Noeud(aux.getId());
     		centroids.add(Noeud);
     	}
     	return centroids;
@@ -116,10 +111,10 @@ public class KMeans {
         
         for(Noeud Noeud : Noeuds) {
         	min = max;
-            for(int i = 0; i &lt; NUM_CLUSTERS; i++) {
+            for(int i = 0; i < NUM_CLUSTERS; i++) {
             	Cluster c = clusters.get(i);
-                distance = Noeud.distance(Noeud, c.getCentroid());
-                if(distance &lt; min){
+                distance = main.Noeud.distance(Noeud, c.getCentroid());
+                if(distance < min){
                     min = distance;
                     cluster = i;
                 }
@@ -131,22 +126,18 @@ public class KMeans {
     
     private void calculateCentroids() {
         for(Cluster cluster : clusters) {
-            double sumX = 0;
-            double sumY = 0;
-            List list = cluster.getNoeuds();
+            double sum = 0;
+            List<Noeud> list = cluster.getNoeuds();
             int n_Noeuds = list.size();
             
             for(Noeud Noeud : list) {
-            	sumX += Noeud.getX();
-                sumY += Noeud.getY();
+            	sum += Noeud.getId();
             }
             
             Noeud centroid = cluster.getCentroid();
-            if(n_Noeuds &gt; 0) {
-            	double newX = sumX / n_Noeuds;
-            	double newY = sumY / n_Noeuds;
-                centroid.setX(newX);
-                centroid.setY(newY);
+            if(n_Noeuds > 0) {
+            	double newX = sum / n_Noeuds;
+                centroid.setId((int) newX);
             }
         }
     }

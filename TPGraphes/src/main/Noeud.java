@@ -17,6 +17,14 @@ public class Noeud {
 		
 	}
 	
+	
+	
+    public static double distance(Noeud p, Noeud centroid) {
+    	return 1;
+    }
+	
+	
+	
 	public boolean hasSuccesseur(int j) {
 		for(Arc ar : succ) {
 			if(ar.getCible().getId()==j) return true;
@@ -45,9 +53,17 @@ public class Noeud {
 	public void setMark(boolean mark) {
 		this.mark = mark;
 	}
+    public void setCluster(int n) {
+        this.cluster_number = n;
+    }
+    
+    public int getCluster() {
+        return this.cluster_number;
+    }
 		private int id;
 		private LinkedList<Arc> succ;
 		private boolean mark;
+	    private int cluster_number = 0;
 
 	
 }
