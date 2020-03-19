@@ -23,10 +23,9 @@ public class main {
 
 
 		
-        int v, e, count = 1, to = 0, from = 0;
+        int v, e;
         v = rg.getNoeuds().size();
         ArrayList<Arc> ars = rg.getArcs();
-		System.out.println("ok");
         e = ars.size();
         MatriceAdja graph = new MatriceAdja(v);
           
@@ -34,11 +33,8 @@ public class main {
         System.out.println("Enter the edges: <to> <from>");
             for(Arc a : ars) 
             {
-              //  to = sc.nextInt();
-                //from = sc.nextInt();
-            	System.out.println("from "+ a.getSource().getId() + " to "+a.getCible().getId());
+            	//System.out.println("from "+ a.getSource().getId() + " to "+a.getCible().getId());
                 graph.makeEdge(a.getCible().getId(), a.getSource().getId(), 1);
-                count++;
             }
  
             System.out.println("The adjacency matrix for the given graph is: ");
@@ -55,8 +51,14 @@ public class main {
                 System.out.println();
             }
  
-        
-
+            
+            
+            
+            int[][] weights = {{1, 3, -2}, {2, 1, 4}, {2, 3, 3}, {3, 4, 2}, {4, 2, -1}};
+            int numVertices = 4;
+     
+            FloydWarshall.floydWarshall(weights, numVertices);
+           // FloydWarshall.printResult(dist, next);
  
 		
 		
